@@ -40,7 +40,7 @@ const Blog = () => {
                     <Calendar size={16} />
                     <span>{new Date(post.date).toLocaleDateString('en-IN', { 
                       year: 'numeric', 
-                      month: 'long', 
+                      month: 'short', 
                       day: 'numeric' 
                     })}</span>
                   </div>
@@ -61,30 +61,32 @@ const Blog = () => {
 const styles = {
   container: {
     maxWidth: '1400px',
-    margin: '0 auto'
+    margin: '0 auto',
+    width: '100%'
   },
   hero: {
     background: 'linear-gradient(135deg, #2d5016 0%, #6b9e3e 100%)',
     color: 'white',
-    padding: '4rem 2rem',
+    padding: '4rem 1.5rem',
     textAlign: 'center'
   },
   heroTitle: {
-    fontSize: '3rem',
+    fontSize: 'clamp(2rem, 5vw, 3rem)',
     marginBottom: '1rem',
     color: 'white'
   },
   heroSubtitle: {
-    fontSize: '1.3rem',
+    fontSize: 'clamp(1rem, 3vw, 1.3rem)',
     opacity: 0.9
   },
   blogSection: {
-    padding: '4rem 2rem'
+    padding: '3rem 1.5rem'
   },
   blogsGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
-    gap: '2rem'
+    gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))',
+    gap: '2rem',
+    maxWidth: '100%'
   },
   blogCard: {
     background: 'white',
@@ -96,14 +98,14 @@ const styles = {
     flexDirection: 'column'
   },
   blogImage: {
-    fontSize: '6rem',
+    fontSize: 'clamp(4rem, 8vw, 6rem)',
     background: '#f8f9fa',
     padding: '2rem',
     textAlign: 'center',
     borderBottom: '3px solid #6b9e3e'
   },
   blogContent: {
-    padding: '2rem',
+    padding: '1.5rem',
     flex: 1,
     display: 'flex',
     flexDirection: 'column'
@@ -116,10 +118,11 @@ const styles = {
     borderRadius: '15px',
     fontSize: '0.85rem',
     fontWeight: '600',
-    marginBottom: '1rem'
+    marginBottom: '1rem',
+    alignSelf: 'flex-start'
   },
   blogTitle: {
-    fontSize: '1.5rem',
+    fontSize: 'clamp(1.2rem, 3vw, 1.5rem)',
     marginBottom: '1rem',
     lineHeight: '1.4'
   },
@@ -132,21 +135,23 @@ const styles = {
     color: '#666',
     lineHeight: '1.7',
     marginBottom: '1.5rem',
-    flex: 1
+    flex: 1,
+    fontSize: 'clamp(0.9rem, 2vw, 1rem)'
   },
   blogMeta: {
     display: 'flex',
-    gap: '1.5rem',
+    gap: '1rem',
     marginBottom: '1.5rem',
     paddingTop: '1rem',
-    borderTop: '1px solid #e0e0e0'
+    borderTop: '1px solid #e0e0e0',
+    flexWrap: 'wrap'
   },
   metaItem: {
     display: 'flex',
     alignItems: 'center',
     gap: '0.5rem',
     color: '#666',
-    fontSize: '0.9rem'
+    fontSize: 'clamp(0.8rem, 2vw, 0.9rem)'
   },
   readMoreLink: {
     display: 'inline-flex',
@@ -155,7 +160,7 @@ const styles = {
     color: '#6b9e3e',
     textDecoration: 'none',
     fontWeight: '600',
-    fontSize: '1rem',
+    fontSize: 'clamp(0.9rem, 2vw, 1rem)',
     transition: 'gap 0.3s'
   }
 };
