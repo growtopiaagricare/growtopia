@@ -136,7 +136,8 @@ const styles = {
   container: {
     maxWidth: '1400px',
     margin: '0 auto',
-    padding: '2rem'
+    padding: '2rem',
+    width: '100%'
   },
   title: {
     fontSize: '2.5rem',

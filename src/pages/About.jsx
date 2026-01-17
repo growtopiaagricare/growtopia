@@ -110,7 +110,8 @@ const About = () => {
 const styles = {
   container: {
     maxWidth: '1400px',
-    margin: '0 auto'
+    margin: '0 auto',
+    width: '100%'
   },
   hero: {
     background: 'linear-gradient(135deg, #2d5016 0%, #6b9e3e 100%)',
