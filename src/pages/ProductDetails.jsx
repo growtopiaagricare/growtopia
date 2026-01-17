@@ -103,7 +103,8 @@ const styles = {
   container: {
     maxWidth: '1200px',
     margin: '0 auto',
-    padding: '2rem'
+    padding: '2rem',
+    width: '100%',
   },
   backBtn: {
     display: 'flex',
@@ -120,7 +121,7 @@ const styles = {
   },
   productContainer: {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(250px,1fr))',
     gap: '3rem',
     marginBottom: '3rem'
   },
@@ -221,7 +222,8 @@ const styles = {
     background: 'white',
     padding: '2rem',
     borderRadius: '15px',
-    boxShadow: '0 5px 15px rgba(0,0,0,0.1)'
+    boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
+    overflowX: 'hidden',
   },
   specsTitle: {
     fontSize: '1.8rem',
