@@ -34,10 +34,10 @@ const Footer = () => {
           <div>
             <h4 style={styles.subHeading}>Follow Us</h4>
             <div style={styles.social}>
-              <a href="#" style={styles.socialLink}>Facebook</a>
-              <a href="#" style={styles.socialLink}>Twitter</a>
-              <a href="#" style={styles.socialLink}>LinkedIn</a>
-              <a href="#" style={styles.socialLink}>Instagram</a>
+              <a href="#!" style={styles.socialLink}>Facebook</a>
+              <a href="#!" style={styles.socialLink}>Twitter</a>
+              <a href="#!" style={styles.socialLink}>LinkedIn</a>
+              <a href="#!" style={styles.socialLink}>Instagram</a>
             </div>
           </div>
         </div>
