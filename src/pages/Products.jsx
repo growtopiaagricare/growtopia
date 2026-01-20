@@ -77,7 +77,7 @@ const Products = ({ onAddToCart }) => {
 
 const styles = {
   container: {
-    maxWidth: '1400px',
+    maxWidth: '1600px',
     margin: '0 auto',
     padding: '3rem 2rem'
   },

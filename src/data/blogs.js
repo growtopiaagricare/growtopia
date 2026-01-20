@@ -3,10 +3,21 @@
  * Renders a formatted Growtopia blog post on a webpage.
  */
 
-const blogData = {
-  title: "Growtopia: Shaping the Future of Smart Gardening",
-  content: [
-    "In a world where technology touches every corner of our lives, even our gardens are getting smarter. Growtopia, an emerging startup in the agri-tech space, is redefining how we connect with nature — through innovation, sustainability, and intelligent design.",
+// ERROR: Original 'blogData' was a single Object, causing .map() in Blog.jsx to crash.
+// FIX: Converted data to an exported Array named 'blogs'.
+// WHY: React components require an Array to iterate and display multiple cards/lists.
+
+export const blogs = [
+  {
+    id:1,
+    title: "Growtopia: Shaping the Future of Smart Gardening",
+    author: "Growtopia team",
+    date: "2026-01-17",
+    category: "Innovation", 
+    image: "🌱", 
+    excerpt: "In a world where technology touches every corner of our lives", 
+    content: [
+      "In a world where technology touches every corner of our lives, even our gardens are getting smarter. Growtopia, an emerging startup in the agri-tech space, is redefining how we connect with nature — through innovation, sustainability, and intelligent design.",
 
     "The Vision Behind Growtopia",
     "At Growtopia, we believe that gardening should be as intuitive as using your smartphone — yet as soulful as tending plants with your own hands. Our mission is to blend nature and technology seamlessly, helping every home, balcony, and community space nurture plants effortlessly, efficiently, and sustainably.",
@@ -44,30 +55,25 @@ const blogData = {
 
     "Join the Green Movement",
     "Whether you’re a plant lover, a tech enthusiast, or a weekend gardener, Growtopia invites you to be part of this change. Together, we can make green living effortless, intelligent, and inspiring. Growtopia — nurturing a smarter tomorrow, one green leaf at a time."
-  ]
-};
+    ]
+  },
+  // can add more blogs as shown below
+  // {
+  //   id:2,
+  //   title: "Title",
+  // author: "Author name",
+  // date: "YYYY-MM-DD",
+  // category: "Category-name",
+  // image: "Image",
+  // excerpt: "Short-desc",
+  //   content:["Hello"]
+  // }
+];
 
-/**
- * Render the blog into the #blog element
- */
-function renderBlog(blog) {
-  const container = document.getElementById("blog");
-  if (!container) return;
+// ERROR: Vanilla JS 'renderBlog' function and DOMContentLoaded listener.
+// FIX: Removed these sections.
+// WHY: React handles DOM rendering; manual 'document.getElementById' calls can conflict with the Virtual DOM.
 
-  // Create title
-  const titleEl = document.createElement("h1");
-  titleEl.textContent = blog.title;
-  container.appendChild(titleEl);
 
-  // Add paragraphs
-  blog.content.forEach((text) => {
-    const p = document.createElement("p");
-    p.textContent = text;
-    container.appendChild(p);
-  });
-}
 
-// Run when DOM is ready
-document.addEventListener("DOMContentLoaded", () => {
-  renderBlog(blogData);
-});
+

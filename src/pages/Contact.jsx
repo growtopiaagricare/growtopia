@@ -187,8 +187,10 @@ const Contact = () => {
 
 const styles = {
   container: {
-    maxWidth: '1400px',
-    margin: '0 auto'
+    maxWidth: '1600px',
+    margin: '0 auto',
+    width: '100%',
+    overflowX:'hidden',
   },
   hero: {
     background: 'linear-gradient(135deg, #2d5016 0%, #6b9e3e 100%)',
@@ -212,7 +214,7 @@ const styles = {
   },
   contactLayout: {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(300px,1fr))',
     gap: '3rem',
     maxWidth: '1200px',
     margin: '0 auto'
@@ -293,7 +295,7 @@ const styles = {
   },
   formRow: {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(250px,1fr))',
     gap: '1.5rem'
   },
   formGroup: {
@@ -311,6 +313,7 @@ const styles = {
     border: '2px solid #e0e0e0',
     borderRadius: '8px',
     fontSize: '1rem',
+    width:'100%',
     transition: 'border-color 0.3s',
     outline: 'none'
   },
@@ -337,7 +340,8 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     gap: '0.75rem',
-    transition: 'background 0.3s'
+    transition: 'background 0.3s',
+    width: '100%',
   }
 };
 
