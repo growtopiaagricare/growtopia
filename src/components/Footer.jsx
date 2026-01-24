@@ -70,7 +70,9 @@ const styles = {
   },
   heading: {
     fontSize: '1.5rem',
-    marginBottom: '1rem'
+    marginBottom: '1rem',
+    color: '#f4a220',  
+  fontWeight: '650'
   },
   subHeading: {
     fontSize: '1.2rem',

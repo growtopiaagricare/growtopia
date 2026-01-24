@@ -114,10 +114,16 @@ const Home = () => {
 
 const styles = {
   hero: {
-    background: 'linear-gradient(135deg, #2d5016 0%, #6b9e3e 100%)',
+    backgroundImage:  "linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.55)), url('/img2.png')", 
+    // background: 'linear-gradient(135deg, #2d5016 0%, #6b9e3e 100%)',
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    height: "clamp(250px, 60vh, 400px)",
     color: 'white',
     padding: 'clamp(3rem, 8vw, 6rem) 1.5rem',
     textAlign: 'center'
+    
   },
   heroTitle: {
     fontSize: 'clamp(2rem, 6vw, 3rem)',

@@ -95,12 +95,17 @@ const Navbar = ({ cartCount }) => {
 
 const styles = {
   nav: {
-    background: '#2d5016',
+  //   background: "linear-gradient(180deg, rgba(115, 173, 184, 0.96), rgba(30, 144, 215, 0.9))",
+  // //  background: "rgba(120, 158, 95, 0.92)",
+    background: "linear-gradient(to right, #c5c380,  #8dc3d4, rgba(93, 148, 183, 0.9), rgba(115, 173, 184, 0.96))",
+  backdropFilter: "blur(6px)",
+
     padding: '1rem 1.5rem',
     position: 'sticky',
     top: 0,
     zIndex: 1000,
-    boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+    boxShadow: '0 2px 10px rgba(0,0,0,0.15)'
+    
   },
   container: {
     maxWidth: '1400px',
@@ -126,11 +131,11 @@ const styles = {
     margin: 0
   },
   link: {
-    color: 'white',
-    textDecoration: 'none',
-    fontWeight: '500',
-    transition: 'color 0.3s',
-    fontSize: '1rem'
+   color: 'white',
+  textDecoration: 'none',
+  fontWeight: '500',
+  fontSize: '1rem',
+  
   },
   cartBtn: {
     background: '#f4a220',
