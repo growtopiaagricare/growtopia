@@ -1,11 +1,19 @@
 // src/data/products.js
+import SmartIrrigationSystem from '../assets/SmartIrrigationSystem.png';
+import CropAnalyticsDashboard from '../assets/CropAnalyticsDashboard.png';
+import DripIrrigationSystem from '../assets/DripIrrigationSystem.png';
+import OrganicFertilizerPack from '../assets/OrganicFertilizerPack.png';
+import PestControlSolution from '../assets/PestControlSolution.png';
+import SmartGreenhouseController from '../assets/SmartGreenhouseController.png';
+import SoilHealthMonitor from '../assets/SoilHealthMonitor.png';
+import WeatherStationPro from '../assets/WeatherStationPro.png';
 export const products = [
   {
     id: 1,
     name: 'Smart Irrigation System',
     price: 15999,
     category: 'IoT',
-    image: '🌊',
+    image: SmartIrrigationSystem,
     description: 'Automated water management system for optimal crop growth with real-time monitoring',
     features: [
       'Automated scheduling based on weather',
@@ -20,7 +28,7 @@ export const products = [
     name: 'Soil Health Monitor',
     price: 8999,
     category: 'Sensors',
-    image: '🌱',
+    image: SoilHealthMonitor,
     description: 'Real-time soil nutrient and pH monitoring with cloud connectivity',
     features: [
       'NPK level detection',
@@ -35,7 +43,7 @@ export const products = [
     name: 'Organic Fertilizer Pack',
     price: 1299,
     category: 'Supplies',
-    image: '🌾',
+    image: OrganicFertilizerPack,
     description: 'Premium organic nutrients for sustainable farming - 50kg pack',
     features: [
       '100% organic certified',
@@ -50,7 +58,7 @@ export const products = [
     name: 'Weather Station Pro',
     price: 12999,
     category: 'IoT',
-    image: '☁️',
+    image: WeatherStationPro,
     description: 'Precision weather forecasting for your farm with AI predictions',
     features: [
       'Temperature & humidity sensors',
@@ -65,7 +73,7 @@ export const products = [
     name: 'Pest Control Solution',
     price: 2499,
     category: 'Supplies',
-    image: '🐛',
+    image: PestControlSolution,
     description: 'Eco-friendly pest management system - Safe for crops and environment',
     features: [
       'Organic ingredients',
@@ -80,7 +88,7 @@ export const products = [
     name: 'Crop Analytics Dashboard',
     price: 24999,
     category: 'Software',
-    image: '📊',
+    image: CropAnalyticsDashboard,
     description: 'AI-powered crop yield prediction and farm management software',
     features: [
       'Yield prediction AI',
@@ -95,7 +103,7 @@ export const products = [
     name: 'Drip Irrigation Kit',
     price: 5999,
     category: 'Equipment',
-    image: '💧',
+    image: DripIrrigationSystem,
     description: 'Complete drip irrigation system for 1 acre farm',
     features: [
       'Water-efficient design',
@@ -110,7 +118,7 @@ export const products = [
     name: 'Smart Greenhouse Controller',
     price: 18999,
     category: 'IoT',
-    image: '🏠',
+    image: SmartGreenhouseController,
     description: 'Automated climate control for greenhouse farming',
     features: [
       'Temperature control',

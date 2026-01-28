@@ -1,38 +1,63 @@
 // src/pages/Products.jsx
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { products, categories } from '../data/products';
+import React, { useState,useEffect } from "react";
+import { Link } from "react-router-dom";
+import { products, categories } from "../data/products";
+import toast, { Toaster, useToasterStore } from "react-hot-toast";
+
 
 const Products = ({ onAddToCart }) => {
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const { toasts } = useToasterStore();
 
-  const filteredProducts = selectedCategory === 'All' 
-    ? products 
-    : products.filter(p => p.category === selectedCategory);
+  const TOAST_LIMIT = 3;
+
+  useEffect(() => {
+    toasts
+      .filter((t) => t.visible) //only count visible ones
+      .filter((_, i) => i >= TOAST_LIMIT) // find those beyond the limit
+      .forEach((t) => toast.dismiss(t.id));
+  }, [toasts]);
+
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const filteredProducts =
+    selectedCategory === "All"
+      ? products
+      : products.filter((p) => p.category === selectedCategory);
 
   const handleAddToCart = (e, product) => {
     e.preventDefault();
     e.stopPropagation();
     onAddToCart(product);
-    alert(`${product.name} added to cart!`);
+    toast.success(`${product.name} added to cart!`, {
+      duration: 3000,
+      position: "top-center",
+      style: {
+        background: "#fff",
+        color: "#000000",
+      },
+    });
   };
 
   return (
     <div style={styles.container}>
+      <Toaster reverseOrder={true} />
       <h1 style={styles.title}>Our Products</h1>
       <p style={styles.subtitle}>
-        Discover innovative agricultural solutions designed to boost productivity and sustainability
+        Discover innovative agricultural solutions designed to boost
+        productivity and sustainability
       </p>
 
       {/* Category Filter */}
       <div style={styles.filterContainer}>
-        {categories.map(category => (
+        {categories.map((category) => (
           <button
             key={category}
             onClick={() => setSelectedCategory(category)}
             style={{
               ...styles.filterButton,
-              ...(selectedCategory === category ? styles.filterButtonActive : {})
+              ...(selectedCategory === category
+                ? styles.filterButtonActive
+                : {}),
             }}
           >
             {category}
@@ -42,20 +67,28 @@ const Products = ({ onAddToCart }) => {
 
       {/* Products Grid */}
       <div style={styles.productsGrid}>
-        {filteredProducts.map(product => (
+        {filteredProducts.map((product) => (
           <div key={product.id} style={styles.productCard}>
             <Link to={`/product/${product.id}`} style={styles.productLink}>
-              <div style={styles.productImage}>{product.image}</div>
+              <div style={styles.productImage}>
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  style={styles.productImage}
+                />
+              </div>
               <span style={styles.categoryBadge}>{product.category}</span>
               <h3 style={styles.productName}>{product.name}</h3>
               <p style={styles.productDescription}>{product.description}</p>
-              <p style={styles.productPrice}>₹{product.price.toLocaleString()}</p>
+              <p style={styles.productPrice}>
+                ₹{product.price.toLocaleString()}
+              </p>
             </Link>
             <div style={styles.buttonGroup}>
               <Link to={`/product/${product.id}`} style={styles.detailsButton}>
                 View Details
               </Link>
-              <button 
+              <button
                 onClick={(e) => handleAddToCart(e, product)}
                 style={styles.cartButton}
               >
@@ -77,135 +110,137 @@ const Products = ({ onAddToCart }) => {
 
 const styles = {
   container: {
-    maxWidth: '1600px',
-    margin: '0 auto',
-    padding: '3rem 2rem'
+    maxWidth: "1600px",
+    margin: "0 auto",
+    padding: "3rem 2rem",
   },
   title: {
-    textAlign: 'center',
-    fontSize: '3rem',
-    color: '#2d5016',
-    marginBottom: '1rem'
+    textAlign: "center",
+    fontSize: "3rem",
+    color: "#2d5016",
+    marginBottom: "1rem",
   },
   subtitle: {
-    textAlign: 'center',
-    fontSize: '1.2rem',
-    color: '#666',
-    marginBottom: '3rem',
-    maxWidth: '800px',
-    margin: '0 auto 3rem'
+    textAlign: "center",
+    fontSize: "1.2rem",
+    color: "#666",
+    marginBottom: "3rem",
+    maxWidth: "800px",
+    margin: "0 auto 3rem",
   },
   filterContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
-    gap: '1rem',
-    marginBottom: '3rem'
+    display: "flex",
+    justifyContent: "center",
+    flexWrap: "wrap",
+    gap: "1rem",
+    marginBottom: "3rem",
   },
   filterButton: {
-    padding: '0.75rem 1.5rem',
-    border: '2px solid #6b9e3e',
-    background: 'white',
-    color: '#6b9e3e',
-    borderRadius: '25px',
-    fontSize: '1rem',
-    fontWeight: '600',
-    cursor: 'pointer',
-    transition: 'all 0.3s'
+    padding: "0.75rem 1.5rem",
+    border: "2px solid #6b9e3e",
+    background: "white",
+    color: "#6b9e3e",
+    borderRadius: "25px",
+    fontSize: "1rem",
+    fontWeight: "600",
+    cursor: "pointer",
+    transition: "all 0.3s",
   },
   filterButtonActive: {
-    background: '#6b9e3e',
-    color: 'white'
+    background: "#6b9e3e",
+    color: "white",
   },
   productsGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-    gap: '2rem'
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
+    gap: "2rem",
   },
   productCard: {
-    background: 'white',
-    borderRadius: '15px',
-    boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
-    overflow: 'hidden',
-    transition: 'transform 0.3s, box-shadow 0.3s',
-    display: 'flex',
-    flexDirection: 'column'
+    background: "white",
+    borderRadius: "15px",
+    boxShadow: "0 5px 15px rgba(0,0,0,0.1)",
+    overflow: "hidden",
+    transition: "transform 0.3s, box-shadow 0.3s",
+    display: "flex",
+    flexDirection: "column",
   },
   productLink: {
-    textDecoration: 'none',
-    color: 'inherit',
-    padding: '1.5rem',
+    textDecoration: "none",
+    color: "inherit",
+    padding: "1.5rem",
     flex: 1,
-    display: 'block'
+    display: "block",
   },
   productImage: {
-    fontSize: '5rem',
-    textAlign: 'center',
-    marginBottom: '1rem'
+    width: "100%",
+    height: "200px",
+    objectFit: "cover",
+    marginBottom: "1rem",
+    borderRadius: "10px",
   },
   categoryBadge: {
-    display: 'inline-block',
-    background: '#e8f5e9',
-    color: '#2d5016',
-    padding: '0.3rem 1rem',
-    borderRadius: '15px',
-    fontSize: '0.85rem',
-    fontWeight: '600',
-    marginBottom: '1rem'
+    display: "inline-block",
+    background: "#e8f5e9",
+    color: "#2d5016",
+    padding: "0.3rem 1rem",
+    borderRadius: "15px",
+    fontSize: "0.85rem",
+    fontWeight: "600",
+    marginBottom: "1rem",
   },
   productName: {
-    fontSize: '1.3rem',
-    color: '#2d5016',
-    marginBottom: '0.5rem'
+    fontSize: "1.3rem",
+    color: "#2d5016",
+    marginBottom: "0.5rem",
   },
   productDescription: {
-    color: '#666',
-    fontSize: '0.95rem',
-    lineHeight: '1.5',
-    marginBottom: '1rem'
+    color: "#666",
+    fontSize: "0.95rem",
+    lineHeight: "1.5",
+    marginBottom: "1rem",
   },
   productPrice: {
-    fontSize: '1.8rem',
-    fontWeight: 'bold',
-    color: '#f4a220',
-    marginBottom: '1rem'
+    fontSize: "1.8rem",
+    fontWeight: "bold",
+    color: "#f4a220",
+    marginBottom: "1rem",
   },
   buttonGroup: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gap: '0.5rem',
-    padding: '0 1.5rem 1.5rem'
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: "0.5rem",
+    padding: "0 1.5rem 1.5rem",
   },
   detailsButton: {
-    padding: '0.75rem',
-    background: '#6b9e3e',
-    color: 'white',
-    border: 'none',
-    borderRadius: '8px',
-    fontSize: '0.95rem',
-    fontWeight: '600',
-    cursor: 'pointer',
-    textAlign: 'center',
-    textDecoration: 'none',
-    transition: 'background 0.3s'
+    padding: "0.75rem",
+    background: "#6b9e3e",
+    color: "white",
+    border: "none",
+    borderRadius: "8px",
+    fontSize: "0.95rem",
+    fontWeight: "600",
+    cursor: "pointer",
+    textAlign: "center",
+    textDecoration: "none",
+    transition: "background 0.3s",
   },
   cartButton: {
-    padding: '0.75rem',
-    background: '#f4a220',
-    color: 'white',
-    border: 'none',
-    borderRadius: '8px',
-    fontSize: '0.95rem',
-    fontWeight: '600',
-    cursor: 'pointer',
-    transition: 'background 0.3s'
+    padding: "0.75rem",
+    background: "#f4a220",
+    color: "white",
+    border: "none",
+    borderRadius: "8px",
+    fontSize: "0.95rem",
+    fontWeight: "600",
+    cursor: "pointer",
+    transition: "background 0.3s",
   },
   noProducts: {
-    textAlign: 'center',
-    padding: '3rem',
-    fontSize: '1.2rem',
-    color: '#666'
-  }
+    textAlign: "center",
+    padding: "3rem",
+    fontSize: "1.2rem",
+    color: "#666",
+  },
 };
 
 export default Products;

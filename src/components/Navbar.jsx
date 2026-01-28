@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ShoppingCart, Menu, X } from 'lucide-react';
 
+
 const Navbar = ({ cartCount }) => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
@@ -31,7 +32,7 @@ const Navbar = ({ cartCount }) => {
       <nav style={styles.nav}>
         <div style={styles.container}>
           <Link to="/" style={styles.logo}>
-            🌱 GROWTOPIA
+            <img src={process.env.PUBLIC_URL + '/growtopia_logo.png'} alt="logo" style={styles.logoImg} /> GROWTOPIA
           </Link>
 
           {/* Desktop Navigation */}
@@ -95,9 +96,11 @@ const Navbar = ({ cartCount }) => {
 
 const styles = {
   nav: {
-  //   background: "linear-gradient(180deg, rgba(115, 173, 184, 0.96), rgba(30, 144, 215, 0.9))",
-  // //  background: "rgba(120, 158, 95, 0.92)",
-    background: "linear-gradient(to right, #c5c380,  #8dc3d4, rgba(93, 148, 183, 0.9), rgba(115, 173, 184, 0.96))",
+    // background: "linear-gradient(180deg, rgba(115, 173, 184, 0.96), rgba(30, 144, 215, 0.9))",
+  //  background: "rgba(120, 158, 95, 0.92)",
+  // background: "linear-gradient(to right, #c5c380,  #8dc3d4, rgba(93, 148, 183, 0.9), rgba(115, 173, 184, 0.96))",
+  // background: "rgba(115, 173, 184, 0.96)",
+  background: "rgba(45, 80, 22,0.76)",
   backdropFilter: "blur(6px)",
 
     padding: '1rem 1.5rem',
@@ -122,6 +125,13 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     gap: '0.5rem'
+  },
+  logoImg:{
+    width: "36px",
+    height:"36px",
+    borderRadius: "50%",
+    objectFit: 'cover',
+    border: '2.5px solid #2d5016'
   },
   navLinksDesktop: {
     display: 'flex',

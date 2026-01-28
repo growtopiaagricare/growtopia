@@ -20,6 +20,10 @@ body {
   overflow-x: hidden;
 }
 
+body::-webkit-scrollbar{
+  display: none;
+}
+
 .App {
   min-height: 100vh;
   display: flex;
@@ -230,7 +234,7 @@ a {
   text-decoration: none;
 }
 
-a:hover {
+button:hover {
   opacity: 0.8;
 }
 
