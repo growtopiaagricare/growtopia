@@ -1,0 +1,162 @@
+// src/components/Footer.jsx
+import React from "react";
+import { Link } from "react-router-dom";
+
+const Footer = () => {
+  return (
+    <footer style={styles.footer}>
+      <div style={styles.container}>
+        <div style={styles.grid}>
+          <div>
+            <Link to='/' onClick={() => window.scrollTo(0, 0)}>
+              <h3 style={styles.heading}>
+                <img src={process.env.PUBLIC_URL + '/growtopia_logo.webp'} alt='logo' style={styles.logoImg} />{" "}
+                GROWTOPIA
+              </h3>
+            </Link>
+            <p style={styles.text}>
+              Revolutionizing agriculture through innovation and sustainable
+              practices.
+            </p>
+          </div>
+
+          <div>
+            <h4 style={styles.subHeading}>Quick Links</h4>
+            <ul style={styles.list}>
+              <li>
+                <Link
+                  to='/'
+                  style={styles.link}
+                  onClick={() => window.scrollTo(0, 0)}
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link to='/products' style={styles.link}>
+                  Products
+                </Link>
+              </li>
+              <li>
+                <Link to='/about' style={styles.link}>
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link to='/blog' style={styles.link}>
+                  Blog
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 style={styles.subHeading}>Contact</h4>
+            <p style={styles.text}>Email: info@growtopia.com</p>
+            <p style={styles.text}>Phone: +91 98765 43210</p>
+            <p style={styles.text}>Ahmedabad, Gujarat, India</p>
+          </div>
+
+          <div>
+            <h4 style={styles.subHeading}>Follow Us</h4>
+            <div style={styles.social}>
+              <a href='https://www.facebook.com/profile.php?id=61575122817138&mibextid=rS40aB7S9Ucbxw6v' style={styles.socialLink} target="_blank" rel="noopener noreferrer">
+                Facebook
+              </a>
+              {/* <a href='#!' style={styles.socialLink} target="_blank" rel="noopener noreferrer">
+                Twitter
+              </a> */}
+              <a href='https://www.linkedin.com/company/growtopia-agricare/' style={styles.socialLink} target="_blank" rel="noopener noreferrer">
+                LinkedIn
+              </a>
+              <a href='https://www.instagram.com/growtopia_agricare' style={styles.socialLink} target="_blank" rel="noopener noreferrer">
+                Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div style={styles.bottom}>
+          <p>© 2025 GROWTOPIA. All rights reserved.</p>
+          <p style={styles.credit}>Made with 💚 by GROWTOPIA Team</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+const styles = {
+  footer: {
+    background: "#2d5016",
+    color: "white",
+    padding: "3rem 2rem 1rem",
+    marginTop: "auto",
+  },
+  container: {
+    maxWidth: "1400px",
+    margin: "0 auto",
+  },
+  logoImg: {
+    width: "36px",
+    height: "36px",
+    borderRadius: "50%",
+    objectFit: "cover",
+  },
+  grid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+    gap: "2rem",
+    marginBottom: "2rem",
+  },
+  heading: {
+    fontSize: "1.5rem",
+    marginBottom: "1rem",
+    color: "#f4a220",
+    fontWeight: "650",
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+  },
+  subHeading: {
+    fontSize: "1.2rem",
+    marginBottom: "1rem",
+    color: "#f4a220",
+  },
+  text: {
+    marginBottom: "0.5rem",
+    lineHeight: "1.6",
+  },
+  list: {
+    listStyle: "none",
+    padding: 0,
+  },
+  link: {
+    color: "white",
+    textDecoration: "none",
+    display: "block",
+    marginBottom: "0.5rem",
+    transition: "color 0.3s",
+  },
+  social: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "0.5rem",
+  },
+  socialLink: {
+    color: "white",
+    textDecoration: "none",
+    transition: "color 0.3s",
+  },
+  bottom: {
+    borderTop: "1px solid rgba(255,255,255,0.2)",
+    paddingTop: "1rem",
+    textAlign: "center",
+    display: "flex",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
+    gap: "1rem",
+  },
+  credit: {},
+};
+
+export default Footer;
